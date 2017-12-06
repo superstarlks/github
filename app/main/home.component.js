@@ -21,7 +21,7 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home-component',
-            template: "\n    <h2>This is home component</h2>\n    <button (click)=\"GotoEmployee()\">Go to employees</button>\n    "
+            templateUrl: './app/main/home.component.html'
         }),
         __metadata("design:paramtypes", [router_1.Router])
     ], HomeComponent);
