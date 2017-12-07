@@ -25,13 +25,40 @@ var EmployeeListComponent = /** @class */ (function () {
             // console.log(this.currentPage);
             // console.log(params['filter']);
         });
+        this.LoadData();
+        this.pages = [1, 2, 3, 4, 5];
+    };
+    EmployeeListComponent.prototype.Delete = function (id) {
+        var _this = this;
+        var confirmResult = confirm("Bạn thật sự muốn xóa?");
+        if (confirmResult) {
+            this.employeeService.Delete(id).subscribe(function (response) {
+                if (response) {
+                    alert("Xóa thành công!");
+                    _this.LoadData();
+                }
+            });
+        }
+    };
+    //lấy dữ liệu
+    EmployeeListComponent.prototype.LoadData = function () {
+        var _this = this;
         this.employeeService.GetList().subscribe(function (response) {
             _this.employees = response;
             // console.log(response);
         }, function (error) {
             console.log(error);
         });
-        this.pages = [1, 2, 3, 4, 5];
+    };
+    //tìm kiếm
+    EmployeeListComponent.prototype.Search = function () {
+        var _this = this;
+        this.employeeService.Search(this.keyword).subscribe(function (response) {
+            _this.employees = response;
+            // console.log(response);
+        }, function (error) {
+            console.log(error);
+        });
     };
     EmployeeListComponent = __decorate([
         core_1.Component({

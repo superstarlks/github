@@ -20,6 +20,9 @@ var EmployeeService = /** @class */ (function () {
     EmployeeService.prototype.GetList = function () {
         return this._http.get(this.apiUrl).map(function (response) { return response.json(); });
     };
+    EmployeeService.prototype.Search = function (keyword) {
+        return this._http.get(this.apiUrl + "?search=" + keyword).map(function (response) { return response.json(); });
+    };
     EmployeeService.prototype.GetSingle = function (id) {
         return this._http.get(this.apiUrl + id).map(function (response) { return response.json(); });
     };
