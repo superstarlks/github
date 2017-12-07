@@ -14,6 +14,8 @@ var employee_component_1 = require("./employee.component");
 var employee_detail_component_1 = require("./main/employee-detail.component");
 var employee_overview_component_1 = require("./main/employee-overview.component");
 var employee_projects_component_1 = require("./main/employee-projects.component");
+var employee_edit_component_1 = require("./main/employee-edit.component");
+var employee_add_component_1 = require("./main/employee-add.component");
 var home_component_1 = require("./main/home.component");
 var employee_service_1 = require("./services/employee.service");
 var http_1 = require("@angular/http");
@@ -37,6 +39,8 @@ var AppModule = /** @class */ (function () {
                 employee_detail_component_1.EmployeeDetailComponent,
                 employee_overview_component_1.EmployeeOverViewComponent,
                 employee_projects_component_1.EmployeeProjectsComponent,
+                employee_edit_component_1.EmployeeEditComponent,
+                employee_add_component_1.EmployeeAddComponent,
                 login_component_1.LoginComponent
             ],
             providers: [employee_service_1.EmployeeService, login_service_1.LoginService, check_login_guard_1.CheckLoginGuard, check_save_form_guard_1.CheckSaveFormGuard],

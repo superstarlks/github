@@ -6,6 +6,8 @@ import { EmployeeListComponent } from './employee.component'
 import { EmployeeDetailComponent } from './main/employee-detail.component';
 import { EmployeeOverViewComponent } from './main/employee-overview.component';
 import { EmployeeProjectsComponent } from './main/employee-projects.component';
+import { EmployeeEditComponent } from './main/employee-edit.component';
+import { EmployeeAddComponent } from './main/employee-add.component';
 import { HomeComponent } from './main/home.component';
 import { EmployeeService } from './services/employee.service';
 import { HttpModule } from '@angular/http';
@@ -26,6 +28,8 @@ import {CheckSaveFormGuard} from './guards/check-save-form.guard';
       EmployeeDetailComponent,
       EmployeeOverViewComponent,
       EmployeeProjectsComponent,
+      EmployeeEditComponent,
+      EmployeeAddComponent,
       LoginComponent
     ],
   providers: [EmployeeService, LoginService, CheckLoginGuard,CheckSaveFormGuard],
