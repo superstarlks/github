@@ -11,6 +11,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var forms_1 = require("@angular/forms");
 var employee_component_1 = require("./employee.component");
+var employee_detail_component_1 = require("./main/employee-detail.component");
 var home_component_1 = require("./main/home.component");
 var employee_service_1 = require("./services/employee.service");
 var http_1 = require("@angular/http");
@@ -30,7 +31,8 @@ var AppModule = /** @class */ (function () {
                 employee_component_1.EmployeeListComponent,
                 home_component_1.HomeComponent,
                 notfound_component_1.NotFoundComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                employee_detail_component_1.EmployeeDetailComponent
             ],
             providers: [employee_service_1.EmployeeService, login_service_1.LoginService, check_login_guard_1.CheckLoginGuard],
             bootstrap: [app_component_1.AppComponent]

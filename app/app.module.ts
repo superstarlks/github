@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'
 import { EmployeeListComponent } from './employee.component'
+import { EmployeeDetailComponent } from './main/employee-detail.component';
 import { HomeComponent } from './main/home.component';
 import { EmployeeService } from './services/employee.service';
 import { HttpModule } from '@angular/http';
@@ -20,7 +21,8 @@ import {CheckLoginGuard} from './guards/check-login.guard';
     EmployeeListComponent,
     HomeComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    EmployeeDetailComponent
   ],
   providers: [EmployeeService,LoginService,CheckLoginGuard],
   bootstrap: [AppComponent]

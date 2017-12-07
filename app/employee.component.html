@@ -18,6 +18,10 @@
             <td>{{employee.age}}</td>
             <td>{{employee.status}}</td>
             <td>{{employee.createdAt | date}}</td>
+            <td>
+                <a [routerLink]="['/employee-detail',employee.id]">Xem</a>
+                <!-- employee-detail:  cái này là router link trong app routes -->
+            </td>
         </tr>
     </tbody>
 </table>
