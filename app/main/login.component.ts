@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 @Component({
-    selector: 'login-component',
+    selector: 'home-component',
     templateUrl: './app/main/login.component.html'
 })
 export class LoginComponent {

@@ -18,7 +18,7 @@ var CheckLoginGuard = /** @class */ (function () {
     CheckLoginGuard.prototype.canActivate = function () {
         var status = this.loginService.IsLogged();
         if (status == false)
-            alert('You don\'t have permission access to this page');
+            alert('Bạn không có quyền truy cập trang này!');
         return status;
     };
     CheckLoginGuard = __decorate([
