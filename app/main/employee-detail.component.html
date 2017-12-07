@@ -1,3 +1,4 @@
+<a class="btn btn-danger" [routerLink]="['/employees']">Trở về</a>
 <table class="table" *ngIf="employee">
     <tr>
         <td>Id</td>
@@ -16,4 +17,7 @@
         <td>{{employee.status}}</td>
     </tr>
 </table>
-<a class="btn btn-info" [routerLink]="['/employees']">Trở về</a>
+<a class="btn btn-primary" [routerLink]="['overview']">Overview</a>
+<a class="btn btn-primary" [routerLink]="['projects']">Projects</a>
+
+<router-outlet></router-outlet>
