@@ -10,22 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var login_service_1 = require("../services/login.service");
-var CheckLoginGuard = /** @class */ (function () {
-    function CheckLoginGuard(loginService) {
-        this.loginService = loginService;
+var router_1 = require("@angular/router");
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(router) {
+        this.router = router;
     }
-    CheckLoginGuard.prototype.canActivate = function () {
-        var status = this.loginService.IsLogged();
-        if (status == false)
-            alert('Bạn không có quyền truy cập trang này!');
-        return status;
+    AuthGuard.prototype.canActivate = function (route, state) {
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        }
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        return false;
     };
-    CheckLoginGuard = __decorate([
+    AuthGuard = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [login_service_1.LoginService])
-    ], CheckLoginGuard);
-    return CheckLoginGuard;
+        __metadata("design:paramtypes", [router_1.Router])
+    ], AuthGuard);
+    return AuthGuard;
 }());
-exports.CheckLoginGuard = CheckLoginGuard;
-//# sourceMappingURL=check-login.guard.js.map
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=auth.guard.js.map

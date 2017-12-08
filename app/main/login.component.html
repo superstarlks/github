@@ -1,82 +1,20 @@
-<div class="login-box visible widget-box no-border">
-    <div class="widget-body">
-        <div class="widget-main">
-            <h4 class="header blue lighter bigger">
-                <i class="ace-icon fa fa-coffee green"></i>
-                Please Enter Your Information
-            </h4>
-
-            <div class="space-6"></div>
-
-            <form #f="ngForm" (ngSubmit)="CheckLogin(f.value)">
-                <fieldset>
-                    <label class="block clearfix">
-                        <span class="block input-icon input-icon-right">
-                            <input type="text" class="form-control" placeholder="Username" name="username" ngModel />
-                            <i class="ace-icon fa fa-user"></i>
-                        </span>
-                    </label>
-
-                    <label class="block clearfix">
-                        <span class="block input-icon input-icon-right">
-                            <input type="password" class="form-control" placeholder="Password" name="password" ngModel />
-                            <i class="ace-icon fa fa-lock"></i>
-                        </span>
-                    </label>
-
-                    <div class="space"></div>
-
-                    <div class="clearfix">
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"> Remember Me</span>
-                        </label>
-
-                        <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                            <i class="ace-icon fa fa-key"></i>
-                            <span class="bigger-110">Login</span>
-                        </button>
-                    </div>
-
-                    <div class="space-4"></div>
-                </fieldset>
-            </form>
-
-            <div class="social-or-login center">
-                <span class="bigger-110">Or Login Using</span>
-            </div>
-
-            <div class="space-6"></div>
-
-            <div class="social-login center">
-                <a class="btn btn-primary">
-                    <i class="ace-icon fa fa-facebook"></i>
-                </a>
-
-                <a class="btn btn-info">
-                    <i class="ace-icon fa fa-twitter"></i>
-                </a>
-
-                <a class="btn btn-danger">
-                    <i class="ace-icon fa fa-google-plus"></i>
-                </a>
-            </div>
-        </div><!-- /.widget-main -->
-
-        <div class="toolbar clearfix">
-            <div>
-                <a href="#" data-target="#forgot-box" class="forgot-password-link">
-                    <i class="ace-icon fa fa-arrow-left"></i>
-                    I forgot my password
-                </a>
-            </div>
-
-            <div>
-                <a href="#" data-target="#signup-box" class="user-signup-link">
-                    I want to register
-                    <i class="ace-icon fa fa-arrow-right"></i>
-                </a>
-            </div>
+<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
         </div>
-    </div><!-- /.widget-body -->
-</div><!-- /.login-box -->
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Login</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+        </div>
+    </form>
+</div>

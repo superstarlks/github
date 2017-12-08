@@ -10,24 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var login_service_1 = require("./services/login.service");
+var router_1 = require("@angular/router");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(loginService) {
-        this.loginService = loginService;
+    function AppComponent(router) {
+        this.router = router;
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.isLoggedin = this.loginService.IsLogged();
-    };
-    AppComponent.prototype.Logout = function () {
-        this.loginService.SetLogin(false);
-        alert('Logged out');
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log('currentUser' + this.currentUser);
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
         }),
-        __metadata("design:paramtypes", [login_service_1.LoginService])
+        __metadata("design:paramtypes", [router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());

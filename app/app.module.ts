@@ -14,9 +14,11 @@ import { HttpModule } from '@angular/http';
 import { appRoutes } from './app.routes';
 import { NotFoundComponent } from './notfound.component';
 import { LoginComponent } from './main/login.component';
-import { LoginService } from './services/login.service';
-import { CheckLoginGuard } from './guards/check-login.guard';
-import {CheckSaveFormGuard} from './guards/check-save-form.guard';
+
+import { AlertComponent } from './directive/alert.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AlertService } from './services/alert.service';
+import { AuthenticationService } from './services/authentication.service';
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpModule, appRoutes],
   declarations:
@@ -32,7 +34,11 @@ import {CheckSaveFormGuard} from './guards/check-save-form.guard';
       EmployeeAddComponent,
       LoginComponent
     ],
-  providers: [EmployeeService, LoginService, CheckLoginGuard,CheckSaveFormGuard],
+  providers: [EmployeeService,
+    AuthGuard,
+    AlertService,
+    AuthenticationService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

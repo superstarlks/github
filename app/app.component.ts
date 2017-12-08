@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './services/login.service';
+import { Router } from '@angular/router';
+
+import { User } from './model/user.model';
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
 })
 export class AppComponent implements OnInit {
-  public isLoggedin: boolean;
-  constructor(private loginService: LoginService) {
+    // currentUser: User;
+    public currentUser:any;
+    constructor(private router: Router
+    ) {
+        
+    }
 
-  }
-  ngOnInit() {
-    this.isLoggedin = this.loginService.IsLogged();
-  }
-  Logout() {
-    this.loginService.SetLogin(false);
-    alert('Logged out');
-  }
+    ngOnInit(){
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      console.log('currentUser' + this.currentUser);
+    }
 }

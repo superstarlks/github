@@ -11,25 +11,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var login_service_1 = require("../services/login.service");
+var alert_service_1 = require("../services/alert.service");
+var authentication_service_1 = require("../services/authentication.service");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(router, loginService) {
+    function LoginComponent(route, router, authenticationService, alertService) {
+        this.route = route;
         this.router = router;
-        this.loginService = loginService;
+        this.authenticationService = authenticationService;
+        this.alertService = alertService;
+        this.model = {};
+        this.loading = false;
     }
-    LoginComponent.prototype.CheckLogin = function (value) {
-        console.log(value);
-        if (value.username == "admin" && value.password == "123") {
-            this.loginService.SetLogin(true);
-            this.router.navigate(['/']);
-        }
+    LoginComponent.prototype.ngOnInit = function () {
+        // reset login status
+        this.authenticationService.logout();
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    };
+    LoginComponent.prototype.login = function () {
+        var _this = this;
+        this.loading = true;
+        this.authenticationService.login(this.model.username, this.model.password).subscribe(function (data) {
+            _this.router.navigate([_this.returnUrl]);
+        }, function (error) {
+            _this.alertService.error(error);
+            _this.loading = false;
+        });
     };
     LoginComponent = __decorate([
         core_1.Component({
-            selector: 'home-component',
+            selector: 'login-component',
             templateUrl: './app/main/login.component.html'
         }),
-        __metadata("design:paramtypes", [router_1.Router, login_service_1.LoginService])
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            router_1.Router,
+            authentication_service_1.AuthenticationService,
+            alert_service_1.AlertService])
     ], LoginComponent);
     return LoginComponent;
 }());

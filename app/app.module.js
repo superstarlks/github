@@ -22,9 +22,9 @@ var http_1 = require("@angular/http");
 var app_routes_1 = require("./app.routes");
 var notfound_component_1 = require("./notfound.component");
 var login_component_1 = require("./main/login.component");
-var login_service_1 = require("./services/login.service");
-var check_login_guard_1 = require("./guards/check-login.guard");
-var check_save_form_guard_1 = require("./guards/check-save-form.guard");
+var auth_guard_1 = require("./guards/auth.guard");
+var alert_service_1 = require("./services/alert.service");
+var authentication_service_1 = require("./services/authentication.service");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -43,7 +43,11 @@ var AppModule = /** @class */ (function () {
                 employee_add_component_1.EmployeeAddComponent,
                 login_component_1.LoginComponent
             ],
-            providers: [employee_service_1.EmployeeService, login_service_1.LoginService, check_login_guard_1.CheckLoginGuard, check_save_form_guard_1.CheckSaveFormGuard],
+            providers: [employee_service_1.EmployeeService,
+                auth_guard_1.AuthGuard,
+                alert_service_1.AlertService,
+                authentication_service_1.AuthenticationService
+            ],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

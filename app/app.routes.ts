@@ -6,19 +6,18 @@ import { EmployeeDetailComponent } from './main/employee-detail.component';
 
 import { NotFoundComponent } from './notfound.component';
 import { LoginComponent } from './main/login.component';
-import { CheckLoginGuard } from './guards/check-login.guard';
 import { EmployeeOverViewComponent } from './main/employee-overview.component';
 import { EmployeeProjectsComponent } from './main/employee-projects.component';
-import { CheckSaveFormGuard } from './guards/check-save-form.guard';
 import { EmployeeEditComponent } from './main/employee-edit.component';
 import { EmployeeAddComponent } from './main/employee-add.component';
+import { AuthGuard } from './guards/auth.guard';
 const routing: Routes = [
-
-    { path: '', component: HomeComponent },
-    { path: 'employees', component: EmployeeListComponent },
-    { path: 'employee-edit/:id', component: EmployeeEditComponent },
-    { path: 'employee-add', component: EmployeeAddComponent },
+    { path: '', component: HomeComponent, canActivate:[AuthGuard] },
     { path: 'login', component: LoginComponent },
+
+    { path: 'employees', component: EmployeeListComponent ,canActivate: [AuthGuard]},
+    { path: 'employee-edit/:id', component: EmployeeEditComponent },
+    { path: 'employee-add', component: EmployeeAddComponent },    
     {
         path: 'employee-detail/:id', component: EmployeeDetailComponent,
         children: [
